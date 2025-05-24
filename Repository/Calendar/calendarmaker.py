@@ -1,8 +1,15 @@
 import datetime
-import holidays
+import sys
+
+try:
+    import holidays
+except ImportError:
+    print("This program requires the holiday library, which you")
+    print("can install by following the instructions at")
+    print("https://pypi.org/project/holidays/")
+    sys.exit()
 
 
-DAYS = ("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
 MONTHS = (
     "January",
     "February",
