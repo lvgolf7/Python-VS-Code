@@ -32,7 +32,7 @@ try:
         sDigits = sevseg.getSevSeg(seconds, 2)
         sTopRow, sMiddleRow, sBottomRow = sDigits.splitlines()
 
-        apDigits = sevseg.getSevSeg(am_pm[0], 1)
+        apDigits = sevseg.getSevSeg(am_pm, 2)
         apTopRow, apMiddleRow, apBottomRow = apDigits.splitlines()
 
         print(hTopRow + "   " + mTopRow + "   " + sTopRow + "  " + apTopRow)
