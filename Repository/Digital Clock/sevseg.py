@@ -13,6 +13,10 @@ def getSevSeg(number, minWidth=0):
                 rows[0] += "   "
                 rows[1] += " _ "
                 rows[2] += "   "
+            case ":":
+                rows[0] += "   "
+                rows[1] += " * "
+                rows[2] += " * "
             case "0":
                 rows[0] += " _ "
                 rows[1] += "| |"
@@ -75,5 +79,5 @@ def getSevSeg(number, minWidth=0):
 
 if __name__ == "__main__":
     print("This module is meant to be imported rather than ran")
-    mynumber = getSevSeg('AM', 2)
+    mynumber = getSevSeg("AM", 2)
     print(mynumber)
