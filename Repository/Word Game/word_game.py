@@ -1,6 +1,7 @@
 from tkinter import *
 from words import *
 import random
+import time
 
 # Setup window in the center of screen
 root = Tk()
@@ -24,6 +25,7 @@ current_guess = ""
 letter_count = 0
 word_list = WORDS
 game_end = False
+wait_delete = False
 
 
 # get letter associated with the button pressed
@@ -49,6 +51,7 @@ def get_key_pressed(event):
 def check_letter(check_entry):
     global current_guess
     global letter_count
+    global wait_delete
     if check_entry == "RETURN":
         check_entry = "ENTER"
     if check_entry == "BACKSPACE":
@@ -57,16 +60,18 @@ def check_letter(check_entry):
         current_guess += check_entry
         place_letter(check_entry)
         letter_count += 1
-    elif (
-        len(current_guess) == 5
-        and check_entry == "ENTER"
-        and current_guess.lower() in word_list
-    ):
-        check_guess(current_guess)
-        current_guess = ""
+    elif len(current_guess) == 5 and check_entry == "ENTER":
+        if current_guess.lower() in word_list: 
+            check_guess(current_guess)
+            current_guess = ""
+        else: 
+            end_label.config(text=" " * 8 + "NOT A VALID WORD")
+            wait_delete=True
     elif len(current_guess) != 0 and check_entry == "BKSP":
         letter_count -= 1
         current_guess = current_guess[:-1]
+        wait_delete=False
+        end_label.config(text=" " * 30)
         erase_letter()
 
 
@@ -121,6 +126,7 @@ def check_guess(guess):
 # any key to reset the game
 def key_pressed(event):
     reset_game()
+    
 
 
 # Win scenario, wait for key press or menu
