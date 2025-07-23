@@ -114,6 +114,7 @@ def check_guess(guess):
                 grid_label[i].config(bg="yellow", fg="black")
                 keyboard_position = ALL_LETTERS.find(guess[j])
                 letter_buttons[keyboard_position].config(bg="yellow", fg="black")
+                temp_word[temp_word.index(target[j])] = "0"
             elif temp_word[j] != "0":
                 grid_label[i].config(bg="light grey", fg="black")
                 keyboard_position = ALL_LETTERS.find(guess[j])
