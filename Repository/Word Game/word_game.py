@@ -1,7 +1,7 @@
-from tkinter import *
-from words import *
+from tkinter import Tk, Frame, Button, Label, Menu, GROOVE, FLAT
+from words import WORDS  # Importing the list of words from a separate file
 import random
-import time
+
 
 # Setup window in the center of screen
 root = Tk()
@@ -61,16 +61,16 @@ def check_letter(check_entry):
         place_letter(check_entry)
         letter_count += 1
     elif len(current_guess) == 5 and check_entry == "ENTER":
-        if current_guess.lower() in word_list: 
+        if current_guess.lower() in word_list:
             check_guess(current_guess)
             current_guess = ""
-        else: 
+        else:
             end_label.config(text=" " * 8 + "NOT A VALID WORD")
-            wait_delete=True
+            wait_delete = True
     elif len(current_guess) != 0 and check_entry == "BKSP":
         letter_count -= 1
         current_guess = current_guess[:-1]
-        wait_delete=False
+        wait_delete = False
         end_label.config(text=" " * 30)
         erase_letter()
 
@@ -126,7 +126,6 @@ def check_guess(guess):
 # any key to reset the game
 def key_pressed(event):
     reset_game()
-    
 
 
 # Win scenario, wait for key press or menu
